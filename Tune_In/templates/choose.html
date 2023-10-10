@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Welcome</title>
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.css')}}" >
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+		<link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/favicon-32x32.png')}}">
+		<!-- <link rel="stylesheet" href="index.css"> -->
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			body{
+				background-color: #191919;
+			}
+			img{
+				width: 30%;
+				height: 30%;
+			}
+			.center{
+				display: flex;
+				justify-content: center;
+			}
+			.btns{
+				/* display: flex; */
+				text-align: center;
+			}
+			button{
+				width: 180px;
+				height: 70px;
+				border-radius: 40px;
+				background-color: rgb(77,254,0);
+				margin-left: 20px;
+			}
+			a{
+				text-decoration: none;
+				color: black;
+				font-size: 16px;
+				font-family: "type-writer";
+			}
+		</style>
+	</head>
+	<body>
+		<div> </div>
+
+		<div class="center">
+			<img src="{{ url_for('static', filename = 'images/LogoFinal.png')}}" class="d-inline-block align-top" width="180" height="65" alt="">
+		</div>
+		<br>
+		<div class="btns">
+			<button><a href="login_returning.html">Log In</a></button>
+			<button><a href="register.html">Sign Up</a></button>
+		</div>
+	</body>
+</html>

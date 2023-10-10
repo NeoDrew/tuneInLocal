@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Follow More</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.css')}}" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/favicon-32x32.png')}}">
+    <style>
+        .navbar-custom {
+            background-color: #191919;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.425);
+        }
+
+        .navbar-custom-2 {
+            background-color: #191919;
+            padding-top: 100px;
+
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: white;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+             text-decoration: underline;
+             color: #5df113
+        }
+
+        .nav-link-2 {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-link-2:hover {
+             text-decoration: underline;
+             color: #ffffff
+        }
+
+        .navbar-nav {
+            margin: 0 70px
+        }
+
+        .custom-nav-link {
+            margin-right: 70px;
+            font-size: 25px;
+            font-family: "type-writer";
+        }
+
+        .custom-nav-link:last-child {
+            margin-right: 0;
+        }
+
+        .custom-nav-link-2 {
+            margin-right: 110px;
+            font-size: 25px;
+            font-family: "type-writer";
+        }
+
+        .custom-nav-link-2:last-child {
+            margin-right: 0;
+        }
+        
+        body {
+            background-color: #191919;
+        }
+
+        @font-face {
+            font-family: "type-writer";
+            src: url(static/typewriterA602_________.ttf) format('truetype');
+        }
+
+        .footer {
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #191919;
+            padding-bottom: 0.4%;
+        }
+
+        .social-icon {
+            height: 40px;
+            width: 40px;
+            font-size: 20px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #5df113;
+        }
+
+        h1.title {
+            font-family: "type-writer";
+            color: #5df113;
+            font-size: 70px;
+            padding-top: 3%;
+            padding-left: 7%;
+            text-shadow: 0 0 5px #00ff2a, 0 0 15px #00ff2a;
+        }
+
+        h1.title:hover {
+            color: #f113b6;
+            text-shadow: 0 0 5px #f113b6, 0 0 15px #f113b6;
+        }
+
+        hr {
+            border: none;
+            border-top: 6px dotted #f80dd5;
+            }
+
+        h1.body-text {
+            color: #f80dd5;
+            font-family: "type-writer";
+            padding-left: 7%;
+            font-size: 50px;
+        }
+
+        
+        
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-custom navbar-expand">
+        <img src="{{ url_for('static', filename = 'images/logo-horizontal.png')}}" class="d-inline-block align-top" width="180" height="65" alt="">
+        <div class="navbar-nav">
+            <a class="nav-link custom-nav-link" href="{{url_for('home')}}">Home</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('feed')}}">Feed</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('myTunes')}}">My Tunes</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('popular')}}">What's Popular</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('friends')}}">My Friends</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('userSettings')}}">Account Settings</a>
+        </div>
+    </nav>
+    <form action="/searchUsers" method="post">
+        <h1 class="title">Search For An Account</h1>
+        <div class="input-group mb-3" style="padding-right: 20%; padding-left: 20%; padding-top: 3%;">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1" style="font-size: 30px;">@</span>
+            </div>
+            <input type="text" class="form-control" name="userToSearch" placeholder="{{searchUsername}}" aria-label="Username" aria-describedby="basic-addon1">
+        </div>
+        <div class="new" style="padding-left: 45%;">
+            <button type="submit" class=" btn btn-success button" style="font-size: 30px; text-align: center; font-family: type-writer; padding-right: 2%;"> &nbspSubmit</button>
+        </div>
+    </form>
+    
+
+    <br><br>
+    <hr>
+    {%if userSearched%}
+        {%if following%}
+            <h1 class="title">Search Results</h1>
+                <h1 class="body-text">{{searchError}}</h1>
+                <form action="/unFollowUser" method="post">
+                    <div id="Username_found" style="display: flex; align-items: center;">
+                        <h1 class="body-text">@{{Username}}</h1>
+                        <div style="padding-left: 3%;">
+                            <button type="submit" class=" btn btn-success button" style="display: inline; font-size: 20px; text-align: center; font-family: type-writer;">Unfollow</button>
+                        </div>
+                    </div>
+                </form>
+        {%else%}
+            <h1 class="title">Search Results</h1>
+            {%if not(Username)%}
+                <h1 class="body-text">{{searchError}}</h1>
+            {%else%}
+                <form action="/followUser" method="post">
+                    <div id="Username_found" style="display: flex; align-items: center;">
+                        <h1 class="body-text">@{{Username}}</h1>
+                        <div style="padding-left: 3%;">
+                            <button type="submit" class=" btn btn-success button" style="display: inline; font-size: 20px; text-align: center; font-family: type-writer;">Follow</button>
+                        </div>
+                    </div>
+                </form>
+            {%endif%}
+        {%endif%}
+    {%endif%}
+
+
+    <br><br><br><br>
+    <div class="footer" style="display: flex; padding: 20px; justify-content: center;">
+
+        <a class="nav-link-2 custom-nav-link-2" href="{{url_for('about')}}">About</a>
+        <a class="nav-link-2 custom-nav-link-2" href="{{url_for('contactUs')}}">Contact Us</a>
+        <a class="nav-link-2 custom-nav-link-2" href="{{url_for('TCs')}}">Terms & Conditions</a>
+        <a class="nav-link-2 custom-nav-link-2" method="GET" href="{{url_for('log_out')}}">Log Out</a>
+    
+        <div style="margin-left: 20px; display: flex;">
+            <a class="social-icon twitter" href="https://twitter.com/">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a class="social-icon instagram" href="https://www.instagram.com/">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a class="social-icon tiktok" href="https://www.tiktok.com/">
+                <i class="fab fa-tiktok"></i>
+            </a> 
+            <a class="social-icon facebook" href="https://en-gb.facebook.com/">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename = 'js/bootstrap.bundle.js')}}"></script>
+    <script>
+        function follow(button) {
+            button.classList.add("clicked");
+            button.innerHTML = "Unfollow";
+        }
+    </script>
+</body>
+</html>

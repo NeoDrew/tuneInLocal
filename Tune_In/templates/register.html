@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.css')}}">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+        integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+        <title>Register</title>
+
+        <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/favicon-32x32.png')}}">
+        <style>
+            body {
+                background-color: #191919;
+            }
+
+            @font-face {
+                font-family: "type-writer";
+                src: url(static/typewriterA602_________.ttf) format('truetype');
+            }
+
+            form {
+                font-family: "type-writer";
+                background-color: #F1FDF0;
+                width: 35rem;
+                margin: auto;
+                border-radius: 12px;
+                border: 1px solid rgba(255, 255, 255, 0.125);
+                padding: 20px 25px;
+            }
+
+            input[type=email], input[type=password]{
+                width: 100%;
+                margin: 10px 0;
+                border-radius: 5px;
+                padding: 15px 18px;
+                box-sizing: border-box;
+            }
+
+            input[type=text], input[type=password]{
+                width: 100%;
+                margin: 10px 0;
+                border-radius: 5px;
+                padding: 15px 18px;
+                box-sizing: border-box;
+            }
+
+            button {
+                background-color: #030804;
+                color: white;
+                padding: 14px 20px;
+                border-radius: 5px;
+                margin: 7px 0;
+                width: 100%;
+                font-size: 18px;
+            }
+
+            button:hover {
+                opacity: 0.6;
+                cursor: pointer;
+            }
+
+            h1 {
+                text-align: center;
+            }
+
+            .login-heading {
+                text-align: center;
+            }
+
+            .login-main {
+                padding: 16px;
+            }
+
+            .form{
+                color: red;
+                text-align: center;
+                font-family: "type-writer";
+                padding-top: 20px;
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <img src="{{ url_for('static', filename = 'images/logo-horizontal.png')}}" width="300" height="110" alt="">
+        </nav>
+        <form action="" method="post">
+            <div class="login-heading">
+                <h1>Register</h1>
+            </div>
+            <div class="login-main">
+                <label for="text">Your Username</label>
+                <input type="text" placeholder="e.g. johnSmith123" name="username" value="{{request.form.username }}" required>
+                <br><br>
+
+                <label for="email">Your Email</label>
+                <input type="email" placeholder="e.g. john.smith@gmail.com" name="email" value="{{request.form.email }}" required>
+                <br><br>
+                <label for="pswrd">Your Password</label>
+                <input type="password" placeholder="Enter password" name="password" value="{{request.form.password }}" required>
+                <br>
+                <button type="submit" value="Login">Connect with Spotify</button>
+                <p class="register">Already a member?   <a href="{{url_for('login')}}">Log In Here!</a></p>
+            </div>
+        </form>
+        {% if registerErrorIn %} <!--Please make this neet, thanks-->
+            <p class="form"><strong>Error: </strong>{{registerErrorIn}}</p>
+        {% endif %}
+        <script src="{{ url_for('static', filename = 'js/bootstrap.bundle.js')}}"></script>
+    </body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.css')}}" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/favicon-32x32.png')}}">
+    <style>
+        .navbar-custom {
+            background-color: #191919;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.425);
+        }
+
+        .navbar-custom-2 {
+            background-color: #191919;
+            padding-top: 300px;
+
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: white;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+             text-decoration: underline;
+             color: #5df113
+        }
+
+        .nav-link-2 {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-link-2:hover {
+             text-decoration: underline;
+             color: #ffffff
+        }
+
+        .navbar-nav {
+            margin: 0 70px
+        }
+
+        .custom-nav-link {
+            margin-right: 70px;
+            font-size: 25px;
+            font-family: "type-writer";
+        }
+
+        .custom-nav-link:last-child {
+            margin-right: 0;
+        }
+
+        .custom-nav-link-2 {
+            margin-right: 110px;
+            font-size: 25px;
+            font-family: "type-writer";
+        }
+
+        .custom-nav-link-2:last-child {
+            margin-right: 0;
+        }
+
+        #clock { font-size: 270px;
+        color: white;
+        margin-top: 30px;
+        margin-left: 90px;
+        text-shadow: 0 0 10px #ffff;
+       }
+        
+        body {
+            background-color: #191919;
+        }
+
+        .body-text{
+            color: #5df113;
+            padding-left: 50px;
+            padding-top: 40px;
+            font-family: "type-writer";
+            font-size: 60px;
+        }
+
+        .body-text-2{ color: white;
+            padding-left: 550px;
+            font-family: "type-writer";
+
+        }
+
+        .body-text-lastplayed{
+            color: #fff;
+            padding-left: 50px;
+            padding-top: 10px;
+            font-family: "type-writer";
+        }
+
+        @font-face {
+            font-family: "type-writer";
+            src: url(static/typewriterA602_________.ttf) format('truetype');
+        }
+
+        .input-group {
+            width: 70%;
+            height: 50px;
+            background-color: #f2f2f2;
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: 0px 0px 10px 0px #888888;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            height: 100%;
+            border: none;
+            border-radius: 25px 0 0 25px;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        
+
+        .footer {
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #191919;
+            padding-bottom: 0.4%;
+        }
+
+        .social-icon {
+            height: 40px;
+            width: 40px;
+            font-size: 20px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #5df113;
+        }
+
+        .new{
+            left: 7%;
+            text-align: center;
+            padding-top: 2%;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-custom navbar-expand">
+        <img src="{{ url_for('static', filename = 'images/logo-horizontal.png')}}" class="d-inline-block align-top" width="180" height="65" alt="">
+        <div class="navbar-nav">
+            <a class="nav-link custom-nav-link" href="{{url_for('home')}}">Home</a>
+            <a class="nav-link custom-nav-link" style="color: #fff;">Feed</a>
+            <a class="nav-link custom-nav-link" style="color: #fff;">My Tunes</a>
+            <a class="nav-link custom-nav-link" style="color: #fff;">What's Popular</a>
+            <a class="nav-link custom-nav-link" style="color: #fff;">My Friends</a>
+            <a class="nav-link custom-nav-link" style="color: #fff;">Account Settings</a>
+        </div>
+    </nav>
+
+    <h1 class="body-text">Hey {{username}}!</h1>
+    <h1 class="body-text-lastplayed">Your last played/current tune:</h1>
+    
+    <div class="container_mainframe" style="border-radius: 12px; text-align: center; padding-top: 1%;">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/{{src}}?utm_source=generator"
+        width="80%" height="300" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; 
+        picture-in-picture" loading="lazy">
+    </iframe> 
+       
+
+    
+    <form action="/submit_song" method="GET" style="display: inline; padding-left: 5%;">
+        <div class="new">
+            <button type="button" class=" btn btn-success button" onclick="submit(this)" style="font-size: 30px; text-align: center; font-family: type-writer; padding-right: 2%;"> &nbsp Submit</button>
+        </div>
+    </form>
+
+
+    <br><br><br><br>
+      
+    <div class="footer" style="display: flex; padding: 20px; justify-content: center;">
+
+        <a class="nav-link-2 custom-nav-link-2" style="color: #fff;">About</a>
+        <a class="nav-link-2 custom-nav-link-2" style="color: #fff;">Contact Us</a>
+        <a class="nav-link-2 custom-nav-link-2" style="color: #fff;">Terms & Conditions</a>
+        <a class="nav-link-2 custom-nav-link-2" method="GET" href="{{url_for('log_out')}}">Log Out</a>
+    
+        <div style="margin-left: 20px; display: flex;">
+            <a class="social-icon twitter" href="https://twitter.com/">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a class="social-icon instagram" href="https://www.instagram.com/">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a class="social-icon tiktok" href="https://www.tiktok.com/">
+                <i class="fab fa-tiktok"></i>
+            </a> 
+            <a class="social-icon facebook" href="https://en-gb.facebook.com/">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename = 'js/bootstrap.bundle.js')}}"></script>
+    <script>
+        function submit(button) {
+            button.classList.add("clicked");
+        }
+    </script>
+
+
+    <script src="https://open.spotify.com/embed-podcast/iframe-api/v1" async></script>
+</body>
+</html>

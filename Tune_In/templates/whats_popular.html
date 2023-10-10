@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What's Popular</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'css/bootstrap.css')}}" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'images/favicon-32x32.png')}}">
+    <style>
+        .navbar-custom {
+            background-color: #191919;
+            box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.425);
+        }
+
+        .navbar-custom-2 {
+            background-color: #191919;
+            padding-top: 100px;
+
+        }
+
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: white;
+        }
+        .nav-link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+             text-decoration: underline;
+             color: #5df113
+        }
+
+        .nav-link-2 {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-link-2:hover {
+             text-decoration: underline;
+             color: #ffffff
+        }
+
+        .navbar-nav {
+            margin: 0 70px
+        }
+
+        .custom-nav-link {
+            margin-right: 70px;
+            font-size: 25px;
+            font-family: "type-writer";
+        }
+
+        .custom-nav-link:last-child {
+            margin-right: 0;
+        }
+
+        .custom-nav-link-2 {
+            margin-right: 110px;
+            font-size: 25px;
+            font-family: "type-writer";
+        }
+
+        .custom-nav-link-2:last-child {
+            margin-right: 0;
+        }
+        
+        body {
+            background-color: #191919;
+        }
+
+        @font-face {
+            font-family: "type-writer";
+            src: url(static/typewriterA602_________.ttf) format('truetype');
+        }
+
+        .footer {
+            text-align: center;
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #191919;
+            padding-bottom: 0.4%;
+        }
+
+        .social-icon {
+            height: 40px;
+            width: 40px;
+            font-size: 20px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #5df113;
+        }
+        
+        .body-text-3 {
+            color: #5df113;
+            font-family: "type-writer";
+            position: absolute;
+            left: 7%;
+            padding-top: 15px;
+            font-size: 80px;
+            text-shadow:0 0 10px  #5df113;
+        }
+
+        .body-text-3:hover {
+            color: #f113b6;
+            text-shadow: 0 0 10px rgb(255, 34, 211);
+        }
+
+        .frame {
+            padding-left: 6%;
+            padding-top: 10%;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-custom navbar-expand">
+        <img src="{{ url_for('static', filename = 'images/logo-horizontal.png')}}" class="d-inline-block align-top" width="180" height="65" alt="">
+        <div class="navbar-nav">
+            <a class="nav-link custom-nav-link" href="{{url_for('home')}}">Home</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('feed')}}">Feed</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('myTunes')}}">My Tunes</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('popular')}}">What's Popular</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('friends')}}">My Friends</a>
+            <a class="nav-link custom-nav-link" href="{{url_for('userSettings')}}">Account Settings</a>
+        </div>
+    </nav>
+
+    <h1 class="body-text-3">What's Popular</h1>
+
+    <div class = "frame">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWY4lFlS4Pnso?utm_source=generator"
+            width="370" height="352" 
+            frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
+        </iframe>
+    </div>
+
+    <div class="frame">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="370" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <div class="frame">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DX0kbJZpiYdZl?utm_source=generator" width="370" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    
+    
+    <div class="footer" style="display: flex; padding: 20px; justify-content: center;">
+
+        <a class="nav-link-2 custom-nav-link-2" href="{{url_for('about')}}">About</a>
+        <a class="nav-link-2 custom-nav-link-2" href="{{url_for('contactUs')}}">Contact Us</a>
+        <a class="nav-link-2 custom-nav-link-2" href="{{url_for('TCs')}}">Terms & Conditions</a>
+        <a class="nav-link-2 custom-nav-link-2" method="GET" href="{{url_for('log_out')}}">Log Out</a>
+    
+        <div style="margin-left: 20px; display: flex;">
+            <a class="social-icon twitter" href="https://twitter.com/">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a class="social-icon instagram" href="https://www.instagram.com/">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a class="social-icon tiktok" href="https://www.tiktok.com/">
+                <i class="fab fa-tiktok"></i>
+            </a> 
+            <a class="social-icon facebook" href="https://en-gb.facebook.com/">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </div>
+    </div>
+    
+    
+    <script src="{{ url_for('static', filename = 'js/bootstrap.bundle.js')}}"></script>
+    <script src="{{ url_for('static', filename = 'js/confetti.js')}}"></script>
+    <script>
+
+      const startit = () => {
+        setTimeout(function () {
+          console.log("start");
+          confetti.start();
+        }, 1000);
+      };
+
+      const stopit = () => {
+        setTimeout(function () {
+          console.log("stop");
+          confetti.stop();
+        }, 6000);
+      };
+
+      startit();
+      stopit();
+    </script>
+</body>
+</html>
