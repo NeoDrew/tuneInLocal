@@ -10,7 +10,7 @@ import bcrypt as bc
 from werkzeug.middleware.proxy_fix import ProxyFix
 
 app = Flask(__name__)
-app.secret_key = "I Am S/H(im)e[r] As You Am S/H(im)e[r] As You Are Me And We Am I And I Are All Our Together: Our Collective Consciousness' Psychogenic Fugue"
+app.secret_key = ""
 app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1)
 
 try:
