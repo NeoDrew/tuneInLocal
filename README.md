@@ -9,3 +9,8 @@ Using the popular social media beReal as inspiration, tuneIn uses Spotify's API 
 This version of tuneIn is for demonstration purposes only. 
 
 If you wish to use it, I reccommend creating an account on [Python Anywhere](https://www.pythonanywhere.com/).
+
+### Poster
+<p align="left">
+  <img src="TuneInPoster.jpg" width="400" alt="Set Preview with Default Settings">
+</p>
